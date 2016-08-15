@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>sort.html</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        table td a:hover{
+            background-color:#0080c0;
+        }
+        .one{
+            background-color:#80ff00;
+        }
+        .two{
+            background-color:#ff8040;
+        }
+        .three{
+            background-color:#008040;
+        }
+        table{
+            width:500px;
+            height:500px;
+            border:#400040 solid 2px;
+            border-collapse:collapse;
+        }
+        table td,th{
+            border:solid 2px;
+        }
+        table th{
+            background-color:#c0c0c0;
+        }
+
+    </style>
+    <script type="text/javascript">
+
+        function loading(){
+            var name;
+            var tabNode=document.getElementById("tabid");
+            var rows=tabNode.rows;//获得每一行的数组对象
+            var rowslength=rows.length;//每一行的长度
+            for(var x=1;x<rowslength;x++){//根据每一个去设置
+                if(x%2==0){
+                    rows[x].className="one";
+                }else{
+                    rows[x].className="two";
+                }
+                //当移动上去之后，之前的颜色要记录下来，不然移下来之后全部都是一个颜色了
+                rows[x].onmouseover=function(){
+                    name=this.className;
+                    this.className="three";
+                }
+                rows[x].onmouseout=function(){
+                    this.className=name;
+                }
+            }
+
+        }
+        onload=function(){
+            loading();
+        }
+        var flag=true;
+        function sortAge(){
+            //对年龄进行排序，要先进行获得每一行对象，然后对象对象中的第一个（从0 开始）的大小进行排序
+            var tabNode = document.getElementById("tabid");
+            var rows0 = tabNode.rows;
+            var rows1 = [];
+            //现将元素拷贝一份出来， 第一行不用排序
+            for (var x = 1; x < rows0.length; x++) {
+                rows1[x - 1] = rows0[x];
+            }
+            for (var x = 0; x < rows1.length - 1; x++) {//每个元素是行对象
+                for (var y = x + 1; y < rows1.length; y++) {
+                    //对每一行的内容进行解析成数字
+                    if (parseInt(rows1[x].cells[1].innerHTML) > parseInt(rows1[y].cells[1].innerHTML)) {
+                        //alert("aa="+x+":"+rows1[x].cells[1].innerHTML);
+                        //alert("bb"+rows1[y].cells[1].innerHTML);
+                        var temp = rows1[x];
+                        rows1[x] = rows1[y];
+                        rows1[y] = temp;
+                    }
+                }
+            }
+
+            /* 点击之后排序，排序之后恢复之前的状态
+
+             if (flag){
+
+             for (var x = 0; x < rows1.length; x++) {
+             //       tabNode.childNodes[0].appendChild(rows[x]);//方法一： 不一定兼容
+             rows1[x].parentNode.appendChild(rows1[x]);
+             }
+             }else{
+
+             for (var x = 1; x < rows0.length; x++) {
+             //       tabNode.childNodes[0].appendChild(rows[x]);//方法一： 不一定兼容
+             rows0[x].parentNode.appendChild(rows0[x]);
+             }
+             }
+             flag=!flag;*/
+            /* 下面的是点之后出现正序和逆序显示 正序和逆序的区别就是appendchild的前后关系而已*/
+            var ageimg=document.getElementById("ageid");
+
+            if (flag) {
+                for (var x = 0; x < rows1.length; x++) {//排好序之后就从0开始
+                    //       tabNode.childNodes[0].appendChild(rows[x]);//方法一： 不一定兼容
+                    rows1[x].parentNode.appendChild(rows1[x]);
+                }
+                ageimg.innerHTML="年龄▲";//设置上面的图标
+
+            }else{
+                for (var x = rows1.length-1; x >=0; x--) {
+                    //       tabNode.childNodes[0].appendChild(rows[x]);//方法一： 不一定兼容
+                    rows1[x].parentNode.appendChild(rows1[x]);
+                }
+                ageimg.innerHTML="年龄▼"
+            }
+            flag=!flag;
+            loading();//排序之后还要对颜色重新设置
+
+        }
+    </script>
+
+</head>
+
+<body>
+<table id="tabid">
+    <tr>
+        <th>姓名</th>
+        <th><a href="javascript:void(0)" onclick="sortAge()" id="ageid">年龄</a></th>
+        <th>出生地</th>
+    </tr>
+    <tr>
+        <td>张三</td>
+        <td>13</td>
+        <td>湖南长沙</td>
+    </tr>
+    <tr>
+        <td>李四</td>
+        <td>15</td>
+        <td>湖南常德</td>
+    </tr>
+    <tr>
+        <td>jack</td>
+        <td>45</td>
+        <td>湖南临澧</td>
+    </tr>
+    <tr>
+        <td>王华</td>
+        <td>23</td>
+        <td>浙江杭州</td>
+    </tr>
+    <tr>
+        <td>张进</td>
+        <td>30</td>
+        <td>安微合肥</td>
+    </tr>
+    <tr>
+        <td>周全</td>
+        <td>23</td>
+        <td>湖南益阳</td>
+    </tr>
+    <tr>
+        <td>杨哥</td>
+        <td>42</td>
+        <td>湖南常德</td>
+    </tr>
+
+</table>
+</body>
+</html>

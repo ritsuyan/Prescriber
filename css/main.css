@@ -1,0 +1,106 @@
+
+/**********      public         css   ********************/
+*{
+	 margin: 0;
+	padding: 0;
+}
+a,a:hover,link{
+	 text-decoration: none;
+}
+html,body{
+	 height: 100%;
+}
+body{
+	 overflow: hidden;
+
+}
+li{
+	 list-style: none;
+
+}
+span{
+	 margin: 0;
+	padding: 0;
+	display:  inline !important;
+}
+.left{
+	 float: left;
+}
+.right{
+	float: right;
+
+}
+.clearfix_ri{
+	clear: right;
+}
+.ov-hid{
+	overflow: hidden;
+}
+
+
+
+/**************************** public css end  *************************************************/
+
+/**************************** main css start  *************************************************/
+
+table{
+	 border-collapse: collapse;
+
+}
+table th{
+	font-size:1.1em;
+	text-align:center;
+	padding-top:1em;
+	padding-bottom:1.5em;
+	background-color: #676da1;
+	color:#ffffff;
+
+ }
+table td{
+	text-align:center;
+	padding-top:1em;
+	padding-bottom:1.1em;
+	background-color: #f4f4f4;
+	color:#000;
+	border-bottom: 1px solid #ccc;
+}
+
+.con_wrap{
+	 width: 100%;
+}
+.fixed_con{
+	 width:25%;
+}
+.swipe_con{
+     width: 72%;
+}
+tr.alt td{
+	background: #66ccff;
+}
+
+
+#swiper-body{
+
+	z-index: -1000;
+	position: relative;
+}
+#fixed_table{
+	 position: relative;
+	z-index: 100;
+}
+
+.table-head{
+	 position: relative;
+	 z-index: 10000;
+}
+.table-body{
+	 position: relative;
+	z-index: -100000;
+}
+/**************************** main css end    *************************************************/
+
+
+
+
+
+
