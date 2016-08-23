@@ -37,8 +37,18 @@ span{
 	overflow: hidden;
 }
 
+.active_line{
+	 background-color: #66ccff;
+}
 
-
+.nega_cl{
+	 background-color: greenyellow;
+	 display: block !important;
+}
+.posi_cl{
+	 background-color: darkred;
+	 display: block !important;
+}
 /**************************** public css end  *************************************************/
 
 /**************************** main css start  *************************************************/
@@ -84,9 +94,13 @@ tr.alt td{
 	z-index: -1000;
 	position: relative;
 }
+#swipe_table{
+	margin-left: 2rem;
+}
 #fixed_table{
 	 position: relative;
 	z-index: 100;
+
 }
 
 .table-head{
@@ -97,8 +111,85 @@ tr.alt td{
 	 position: relative;
 	z-index: -100000;
 }
+
+#fixed_btn{
+	width: 2.5em;
+	line-height: 2.5em;
+	border-radius: 2em;
+	background: rgba(216,27,33,.8);
+	position: absolute;
+	left: 79%;
+	top: 88%;
+	color: black;
+	text-align: center;
+	font-size: 2em;
+	transition: all 1s ease-out;
+}
+
+
+.fun_btn{
+	width: 2em;
+	height: 2em;
+	line-height: 2em;
+	border-radius: 1em;
+	background: rgba(216,27,33,.8);
+	position: absolute;
+	color: black;
+	text-align: center;
+	font-size: smaller;
+	transition: all 1s ease-out;
+}
+.fun_btn:last-child{
+	left: 21% !important;
+	top: -94% !important;
+
+}
+
+.tb_title{
+	 font-weight: bold;
+	 text-align: center;
+}
+.tb_title a{
+
+}
+
+.tb_con{
+	    margin-top: 26%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.con_line{
+	    height: 2em;
+    font-size: 1.5em;
+    border-bottom: 1px solid #ccc;
+    display: block;
+    margin-bottom: 3%;
+}
 /**************************** main css end    *************************************************/
 
+
+
+/*************************** sec view  start  ***************************************/
+
+.panel-collapse{
+	 height:30em !important;
+}
+
+.panel-collapse{
+	 overflow: scroll;
+}
+
+#accordion span{
+	display: block !important;
+
+}
+#accordion span input{
+	margin-right: 8em;
+}
+#filter_con{
+	 overflow: scroll;
+}
+/*************************** sec view   end   ***************************************/
 
 
 

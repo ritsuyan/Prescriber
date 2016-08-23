@@ -11,10 +11,14 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>RitsuYan Io</title>
     <link rel="stylesheet" href="./css/swiper.min.css">
-    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
     <!-- Bootstrap -->
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js" ></script>
     <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/main.css">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -36,22 +40,22 @@
                    </thead>
                    <tbody id="fixed-body" class="table-body">
                      <tr>
-                         <td>CACCAMO,ALLAN</td>
+                         <td>CACCAMO,ALLAN1</td>
                      </tr>
                    <tr>
-                       <td>CACCAMO,ALLAN</td>
+                       <td>CACCAMO,ALLAN2</td>
                    </tr>
                    <tr>
-                       <td>CACCAMO,ALLAN</td>
+                       <td>CACCAMO,ALLAN3</td>
                    </tr>
                    <tr>
-                       <td>CACCAMO,ALLAN</td>
+                       <td>CACCAMO,ALLAN4</td>
                    </tr>
                    <tr>
-                       <td>CACCAMO,ALLAN</td>
+                       <td>CACCAMO,ALLAN5</td>
                    </tr>
                    <tr>
-                       <td>CACCAMO,ALLAN</td>
+                       <td>CACCAMO,ALLAN6</td>
                    </tr>
                    <tr>
                        <td>CACCAMO,ALLAN</td>
@@ -91,6 +95,7 @@
                </table>   <!-- fixed_table_title end -->
           </div>            <!-- fixed-con end -->
 
+
           <div class="left swipe_con">
                <table id="swipe_table">
                    <thead id="swipe_table_title" class="table-head">
@@ -99,7 +104,11 @@
                            <th>Specilaty</th>
                            <th>City,State</th>
                            <th>Zip</th>
-                           <th>CMVSPM</th>
+                           <th onclick="sort_attr({
+      'dom': document.getElementById('swipe_table'),
+      'related': document.getElementById('fixed_table'),
+      'index' : 4
+})">CMVSPM</th>
                            <th>CMVSP4</th>
                            <th>CMVSP4</th>
                            <th>CMVSP4</th>
@@ -117,7 +126,7 @@
                            <td>OAKLAND,ME</td>
                            <td>04963</td>
                            <td>100%</td>
-                           <td>-100%</td>
+                           <td>-233%</td>
                            <td>-100%</td>
                            <td>-100%</td>
                            <td>-100%</td>
@@ -128,7 +137,31 @@
                        <td>FP</td>
                        <td>OAKLAND,ME</td>
                        <td>04963</td>
-                       <td>100%</td>
+                       <td>10%</td>
+                       <td>-333%</td>
+                       <td>-100%</td>
+                       <td>-100%</td>
+                       <td>-100%</td>
+                       <td>-100%</td>
+                   </tr>
+                   <tr class="alt swiper-slide">
+                       <td>12BA1</td>
+                       <td>FP</td>
+                       <td>OAKLAND,ME</td>
+                       <td>04963</td>
+                       <td>20%</td>
+                       <td>-100%</td>
+                       <td>-100%</td>
+                       <td>-100%</td>
+                       <td>-100%</td>
+                       <td>-100%</td>
+                   </tr>
+                   <tr class="swiper-slide">
+                       <td>12BA1</td>
+                       <td>FP</td>
+                       <td>OAKLAND,ME</td>
+                       <td>04963</td>
+                       <td>30%</td>
                        <td>-100%</td>
                        <td>-100%</td>
                        <td>-100%</td>
@@ -140,7 +173,7 @@
                        <td>FP</td>
                        <td>OAKLAND,ME</td>
                        <td>04963</td>
-                       <td>100%</td>
+                       <td>40%</td>
                        <td>-100%</td>
                        <td>-100%</td>
                        <td>-100%</td>
@@ -164,7 +197,7 @@
                        <td>FP</td>
                        <td>OAKLAND,ME</td>
                        <td>04963</td>
-                       <td>100%</td>
+                       <td>2%</td>
                        <td>-100%</td>
                        <td>-100%</td>
                        <td>-100%</td>
@@ -176,7 +209,7 @@
                        <td>FP</td>
                        <td>OAKLAND,ME</td>
                        <td>04963</td>
-                       <td>100%</td>
+                       <td>90%</td>
                        <td>-100%</td>
                        <td>-100%</td>
                        <td>-100%</td>
@@ -188,7 +221,7 @@
                        <td>FP</td>
                        <td>OAKLAND,ME</td>
                        <td>04963</td>
-                       <td>100%</td>
+                       <td>80%</td>
                        <td>-100%</td>
                        <td>-100%</td>
                        <td>-100%</td>
@@ -200,7 +233,7 @@
                        <td>FP</td>
                        <td>OAKLAND,ME</td>
                        <td>04963</td>
-                       <td>100%</td>
+                       <td>40%</td>
                        <td>-100%</td>
                        <td>-100%</td>
                        <td>-100%</td>
@@ -212,7 +245,7 @@
                        <td>FP</td>
                        <td>OAKLAND,ME</td>
                        <td>04963</td>
-                       <td>100%</td>
+                       <td>12%</td>
                        <td>-100%</td>
                        <td>-100%</td>
                        <td>-100%</td>
@@ -224,7 +257,7 @@
                        <td>FP</td>
                        <td>OAKLAND,ME</td>
                        <td>04963</td>
-                       <td>100%</td>
+                       <td>8%</td>
                        <td>-100%</td>
                        <td>-100%</td>
                        <td>-100%</td>
@@ -236,7 +269,7 @@
                        <td>FP</td>
                        <td>OAKLAND,ME</td>
                        <td>04963</td>
-                       <td>100%</td>
+                       <td>6%</td>
                        <td>-100%</td>
                        <td>-100%</td>
                        <td>-100%</td>
@@ -248,31 +281,7 @@
                        <td>FP</td>
                        <td>OAKLAND,ME</td>
                        <td>04963</td>
-                       <td>100%</td>
-                       <td>-100%</td>
-                       <td>-100%</td>
-                       <td>-100%</td>
-                       <td>-100%</td>
-                       <td>-100%</td>
-                   </tr>
-                   <tr class="alt swiper-slide">
-                       <td>12BA1</td>
-                       <td>FP</td>
-                       <td>OAKLAND,ME</td>
-                       <td>04963</td>
-                       <td>100%</td>
-                       <td>-100%</td>
-                       <td>-100%</td>
-                       <td>-100%</td>
-                       <td>-100%</td>
-                       <td>-100%</td>
-                   </tr>
-                   <tr class="swiper-slide">
-                       <td>12BA1</td>
-                       <td>FP</td>
-                       <td>OAKLAND,ME</td>
-                       <td>04963</td>
-                       <td>100%</td>
+                       <td>43%</td>
                        <td>-100%</td>
                        <td>-100%</td>
                        <td>-100%</td>
@@ -322,11 +331,38 @@
           </div> <!-- swipe_con end -->
     </div>  <!-- con_wrap end -->
 
+    <div id="fixed_btn">+</div>
+
 
     <script src="./js/hammer.min.js"></script>
     <script src="./js/touch.js"></script>
-    <script src="./js/jquery-scrolltofixed-min.js"></script>
+    <script src="./js/main.js" charset="utf-8"></script>
+    <script>
+       var hammer_btn = new Hammer(document.getElementById('fixed_btn'));
 
+        hammer_btn.on('tap', function (evt) {
+
+            is_show = show_btn({
+                 'dom':document.getElementById('fixed_btn')
+            })
+
+            if(document.getElementById('fixed_btn').childNodes.length > 1) {
+                for (var i = 1; i < 4; i++) {
+                    var hammer_btn = new Hammer(document.getElementById('fixed_btn').childNodes[i]);
+                    hammer_btn.on('tap', function (ev) {
+                        var $name = ev.target.innerHTML.trim();
+
+                        cre_view({
+                             'name' : $name
+                         })
+                    })
+
+                }
+            }
+        })
+
+
+    </script>
 
 </body>
 </html>

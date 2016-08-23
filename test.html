@@ -54,7 +54,7 @@
             }
 
         }
-        onload=function(){
+        window.onload=function(){
             loading();
         }
         var flag=true;
@@ -63,10 +63,15 @@
             var tabNode = document.getElementById("tabid");
             var rows0 = tabNode.rows;
             var rows1 = [];
-            //现将元素拷贝一份出来， 第一行不用排序
+
+
             for (var x = 1; x < rows0.length; x++) {
                 rows1[x - 1] = rows0[x];
             }
+
+            /*
+            *    now execute the row1 bubble sort
+            * */
             for (var x = 0; x < rows1.length - 1; x++) {//每个元素是行对象
                 for (var y = x + 1; y < rows1.length; y++) {
                     //对每一行的内容进行解析成数字
@@ -82,20 +87,6 @@
 
             /* 点击之后排序，排序之后恢复之前的状态
 
-             if (flag){
-
-             for (var x = 0; x < rows1.length; x++) {
-             //       tabNode.childNodes[0].appendChild(rows[x]);//方法一： 不一定兼容
-             rows1[x].parentNode.appendChild(rows1[x]);
-             }
-             }else{
-
-             for (var x = 1; x < rows0.length; x++) {
-             //       tabNode.childNodes[0].appendChild(rows[x]);//方法一： 不一定兼容
-             rows0[x].parentNode.appendChild(rows0[x]);
-             }
-             }
-             flag=!flag;*/
             /* 下面的是点之后出现正序和逆序显示 正序和逆序的区别就是appendchild的前后关系而已*/
             var ageimg=document.getElementById("ageid");
 
@@ -165,5 +156,49 @@
     </tr>
 
 </table>
+
+
+
+
+
+'<div class="panel-group" id="accordion">' +
+
+  '<div class="panel panel-default">' + 
+    '<div class="panel-heading">' +
+      '<h4 class="panel-title">' +
+        '<a data-toggle="collapse" data-parent="#accordion" 
+          href="#collapseOne">        
+         选择关键列                 > '  + 
+        '</a>'      +
+      '</h4>'      +
+    '</div>'      +
+
+
+    '<div id="collapseOne" class="panel-collapse collapse in">' +
+      '<div class="panel-body">'  +      
+      '</div>'  + 
+    '</div>'  +
+  '</div>'  + 
+
+
+  '<div class="panel panel-default">' + 
+    '<div class="panel-heading">' +
+      '<h4 class="panel-title">' +
+        '<a data-toggle="collapse" data-parent="#accordion" 
+          href="#collapseTwo">        
+         选择并排列                 > '  + 
+        '</a>'      +
+      '</h4>'      +
+    '</div>'      +
+
+
+    '<div id="collapseTwo" class="panel-collapse collapse in">' +
+      '<div class="panel-body">'  +      
+      '</div>'  + 
+    '</div>'  +
+  '</div>'  + 
+'</div>'
+
+
 </body>
 </html>

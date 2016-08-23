@@ -44,7 +44,7 @@ Slider.prototype.bindDOM = function(){
              y : evt.targetTouches[0].pageY
         }
 
-        console.log(self.dire)
+      //  console.log(self.dire)
         if(self.dire === 'horizon'){
             if(Math.abs(moveP.x-self.startX) > Math.abs(moveP.y - self.startY)){
                 // move horizontal
@@ -53,7 +53,7 @@ Slider.prototype.bindDOM = function(){
                     //  change transform style with offsetX
                     //计算手指的偏移量
 
-                    console.log('curr offset X ' + self.offsetX)
+      //              console.log('curr offset X ' + self.offsetX)
                     self.wrap.style.webkitTransition = ('-webkit-transform 0s ease-out');
                     self.wrap.style.webkitTransform = ('translate3d(' + self.offsetX + 'px, 0, 0)');
                 }
@@ -66,10 +66,10 @@ Slider.prototype.bindDOM = function(){
                     //  change transform style with offsetX
                     //计算手指的偏移量
 
-                    console.log('curr offset Y ' + self.offsetY)
+        //            console.log('curr offset Y ' + self.offsetY)
                     self.wrap.style.webkitTransition = ('-webkit-transform 0s ease-out');
-                    self.wrap.style.webkitTransform = ('translateY(' + self.offsetY + "px" )
-                    self.addtion.style.webkitTransform = ('translateY(' + self.offsetY + "px" )
+                    self.wrap.style.webkitTransform = ('translate3d(0px,'+ self.offsetY +'px,0)');
+                    self.addtion.style.webkitTransform = ('translate3d(0px,'+ self.offsetY +'px,0)');
 
                 }
             }
