@@ -40,22 +40,22 @@
                    </thead>
                    <tbody id="fixed-body" class="table-body">
                      <tr>
-                         <td>CACCAMO,ALLAN1</td>
+                         <td>商品1</td>
                      </tr>
                    <tr>
-                       <td>CACCAMO,ALLAN2</td>
+                       <td>商品2</td>
                    </tr>
                    <tr>
-                       <td>CACCAMO,ALLAN3</td>
+                       <td>商品3</td>
                    </tr>
                    <tr>
-                       <td>CACCAMO,ALLAN4</td>
+                       <td>商品4</td>
                    </tr>
                    <tr>
-                       <td>CACCAMO,ALLAN5</td>
+                       <td>商品5</td>
                    </tr>
                    <tr>
-                       <td>CACCAMO,ALLAN6</td>
+                       <td>商品6</td>
                    </tr>
                    <tr>
                        <td>CACCAMO,ALLAN</td>
@@ -100,20 +100,31 @@
                <table id="swipe_table">
                    <thead id="swipe_table_title" class="table-head">
                       <tr >
-                           <th>Territory</th>
-                           <th>Specilaty</th>
-                           <th>City,State</th>
-                           <th>Zip</th>
+                      <!-- "name":"商品1",//商品名称
+                            "sales":"950",//销售额
+                            "prev_sales":"900",//环比销售额
+                            "sales_triangle":3,//预警
+                            "last_sales":"1200",//同比销售额
+                            "last_sales_triangle":2,//警告
+                            "amount":"100",//数量
+                            "prev_amount":"80",//环比数量
+                            "amount_triangle":1,//正常
+                            "gross_margin":"100",//毛利
+                       -->
+                           <th>sales</th>
+                           <th>prev_sales</th>
+                           <th>sales_triangle</th>
+                           <th>last_sales</th>
                            <th onclick="sort_attr({
       'dom': document.getElementById('swipe_table'),
       'related': document.getElementById('fixed_table'),
       'index' : 4
 })">CMVSPM</th>
-                           <th>CMVSP4</th>
-                           <th>CMVSP4</th>
-                           <th>CMVSP4</th>
-                           <th>CMVSP4</th>
-                           <th>CMVSP4</th>
+                           <th>amount</th>
+                           <th>prev_amount</th>
+                           <th>gross_margin</th>
+                           <th>gross_margin</th>
+                           <th>last_sales_triangle</th>
 
                       </tr>
                      <!-- th end -->

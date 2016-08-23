@@ -397,8 +397,9 @@ function cre_view(opts){
 
             filter_fun({
                   'dom': document.getElementById('swiper-body'),
-                  'dom_title':document.getElementById('swipe_table_title'),
-                  'arr': filter_push
+                  'dom_title':document.getElementById('fixed-body'),
+                  'arr': filter_push,
+                  'attr_arr': document.getElementById('swipe_table_title').getElementsByTagName('th')
             })
         }
 
@@ -424,21 +425,31 @@ function clear_fun(opts) {
 
 function filter_fun(opts){
     var dom = opts.dom;
-    var dom_title = opts.dom_title.getElementsByTagName('th');
+    var dom_title = opts.dom_title.getElementsByTagName('td');
     var arr = opts.arr;
+    var attr_arr = opts.attr_arr;
 
     var dom_title_arr = [];
+
+    var all_attr_arr = [];
+    for(var i = 0 ; i < attr_arr.length; i++){
+      all_attr_arr.push(attr_arr[i].innerHTML.trim())
+   }
+    console.log(all_attr_arr)
+
 
    for(var i = 0 ; i < dom_title.length; i++){
       dom_title_arr.push(dom_title[i].innerHTML.trim())
    }
     console.log(dom_title_arr)
+    // real attr ["商品1,商品2"]
 
     var name_arr = [];
    for( var z = 0 ; z  < json_data.length; z++){
         name_arr.push(json_data[z]['name'])
    }
     console.log(name_arr)
+    //  ["商品1", "商品2", "商品3", "商品4", "商品3", "商品3", "商品3", "商品3", "商品3", "商品3"]
 
     var real_index = [];
     for( var r = 0 ; r  < dom_title_arr.length; r++){
@@ -446,13 +457,14 @@ function filter_fun(opts){
     }
 
     console.log(real_index)
+    // real attr index     [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
 
-
-
+    console.log( arr )
+    
   for(var w = 0 ; w < arr.length; w++){
 
       for( var y = 0 ; y < dom_title_arr.length; y++){
-          dom.rows[w].cells[y].innerHTML = json_data[ real_index[w] ][ dom_title_arr[y]]
+          dom.rows[w].cells[y].innerHTML = json_data[ real_index[w] ][ all_attr_arr[y] ]
       }
 
 
