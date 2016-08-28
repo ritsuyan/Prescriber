@@ -75,8 +75,15 @@ Slider.prototype.bindDOM = function(){
                     self.wrap.style.webkitTransform = ('translate3d(0px,'+ self.offsetY +'px,0)');
                     self.addtion.style.webkitTransform = ('translate3d(0px,'+ self.offsetY +'px,0)');
 
+                }else{
+                    var fixed_body = document.getElementById('fixed-body');     
+                    if(fixed_body.style.webkitTransform.indexOf('-') > 0){
+                    self.wrap.style.webkitTransition = ('-webkit-transform 0s ease-out');
+                    self.wrap.style.webkitTransform = ('translate3d(0px,0,0)');
+                    self.addtion.style.webkitTransform = ('translate3d(0px,0,0)');
+                    } 
                 }
-            }
+            } 
         }
 
         document.getElementById('swipe_table_title').style.position = 'fixed !important';
