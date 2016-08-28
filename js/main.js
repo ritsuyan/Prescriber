@@ -406,9 +406,6 @@ function cre_view(opts){
                   'attr_arr': document.getElementById('swipe_table_title').getElementsByTagName('th')
             })
 
-            delete_tr({
-              'dom' : document.getElementById('swiper-body')
-          })
 
             change_width({
                'dom' : document.getElementsByClassName('fixed_con')[0],
@@ -557,20 +554,6 @@ function delete_by_num(opts) {
   }
 }
 
-function delete_tr(opts) {
-   
-     var dom = opts.dom;
-
-     var td_arr = dom.getElementsByTagName('tr');
-
-     var len = td_arr.len;
-
-     for( var i = 0 ;  i < len ; i++){
-        if(td_arr[i].getAttribute('mark') !== true){
-          td_arr[i].parentNode.removeChild(td_arr[i])
-        }
-     }
-}
 
 function re_bind_tap(){
     var hammer_btn = new Hammer(document.getElementById('fixed_btn'));
