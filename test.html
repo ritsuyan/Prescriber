@@ -30,85 +30,7 @@
         }
 
     </style>
-    <script type="text/javascript">
 
-        function loading(){
-            var name;
-            var tabNode=document.getElementById("tabid");
-            var rows=tabNode.rows;//获得每一行的数组对象
-            var rowslength=rows.length;//每一行的长度
-            for(var x=1;x<rowslength;x++){//根据每一个去设置
-                if(x%2==0){
-                    rows[x].className="one";
-                }else{
-                    rows[x].className="two";
-                }
-                //当移动上去之后，之前的颜色要记录下来，不然移下来之后全部都是一个颜色了
-                rows[x].onmouseover=function(){
-                    name=this.className;
-                    this.className="three";
-                }
-                rows[x].onmouseout=function(){
-                    this.className=name;
-                }
-            }
-
-        }
-        window.onload=function(){
-            loading();
-        }
-        var flag=true;
-        function sortAge(){
-            //对年龄进行排序，要先进行获得每一行对象，然后对象对象中的第一个（从0 开始）的大小进行排序
-            var tabNode = document.getElementById("tabid");
-            var rows0 = tabNode.rows;
-            var rows1 = [];
-
-
-            for (var x = 1; x < rows0.length; x++) {
-                rows1[x - 1] = rows0[x];
-            }
-
-            /*
-            *    now execute the row1 bubble sort
-            * */
-            for (var x = 0; x < rows1.length - 1; x++) {//每个元素是行对象
-                for (var y = x + 1; y < rows1.length; y++) {
-                    //对每一行的内容进行解析成数字
-                    if (parseInt(rows1[x].cells[1].innerHTML) > parseInt(rows1[y].cells[1].innerHTML)) {
-                        //alert("aa="+x+":"+rows1[x].cells[1].innerHTML);
-                        //alert("bb"+rows1[y].cells[1].innerHTML);
-                        var temp = rows1[x];
-                        rows1[x] = rows1[y];
-                        rows1[y] = temp;
-                    }
-                }
-            }
-
-            /* 点击之后排序，排序之后恢复之前的状态
-
-            /* 下面的是点之后出现正序和逆序显示 正序和逆序的区别就是appendchild的前后关系而已*/
-            var ageimg=document.getElementById("ageid");
-
-            if (flag) {
-                for (var x = 0; x < rows1.length; x++) {//排好序之后就从0开始
-                    //       tabNode.childNodes[0].appendChild(rows[x]);//方法一： 不一定兼容
-                    rows1[x].parentNode.appendChild(rows1[x]);
-                }
-                ageimg.innerHTML="年龄▲";//设置上面的图标
-
-            }else{
-                for (var x = rows1.length-1; x >=0; x--) {
-                    //       tabNode.childNodes[0].appendChild(rows[x]);//方法一： 不一定兼容
-                    rows1[x].parentNode.appendChild(rows1[x]);
-                }
-                ageimg.innerHTML="年龄▼"
-            }
-            flag=!flag;
-            loading();//排序之后还要对颜色重新设置
-
-        }
-    </script>
 
 </head>
 
@@ -157,47 +79,20 @@
 
 </table>
 
+<script type="text/javascript">
+     
 
+        function clear_td(opts) {
+            var dom = opts.dom;
 
+            var delete_node = dom.rows[2].cells[2];
 
-
-'<div class="panel-group" id="accordion">' +
-
-  '<div class="panel panel-default">' + 
-    '<div class="panel-heading">' +
-      '<h4 class="panel-title">' +
-        '<a data-toggle="collapse" data-parent="#accordion" 
-          href="#collapseOne">        
-         选择关键列                 > '  + 
-        '</a>'      +
-      '</h4>'      +
-    '</div>'      +
-
-
-    '<div id="collapseOne" class="panel-collapse collapse in">' +
-      '<div class="panel-body">'  +      
-      '</div>'  + 
-    '</div>'  +
-  '</div>'  + 
-
-
-  '<div class="panel panel-default">' + 
-    '<div class="panel-heading">' +
-      '<h4 class="panel-title">' +
-        '<a data-toggle="collapse" data-parent="#accordion" 
-          href="#collapseTwo">        
-         选择并排列                 > '  + 
-        '</a>'      +
-      '</h4>'      +
-    '</div>'      +
-
-
-    '<div id="collapseTwo" class="panel-collapse collapse in">' +
-      '<div class="panel-body">'  +      
-      '</div>'  + 
-    '</div>'  +
-  '</div>'  + 
-'</div>'
+            delete_node.parentNode.removeChild(delete_node)
+        }
+        clear_td({
+             'dom' : document.getElementById('tabid')
+        })
+</script>
 
 
 </body>

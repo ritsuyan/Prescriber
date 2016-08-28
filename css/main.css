@@ -53,6 +53,12 @@ span{
 
 /**************************** main css start  *************************************************/
 
+h4:first-child{
+	  z-index: 1000000;
+	  position: relative;
+}
+
+
 table{
 	 border-collapse: collapse;
 
@@ -89,11 +95,25 @@ tr.alt td{
 }
 
 
+#fixed_table_title{
+	 position: relative !important;
+	 z-index: 10000 !important;
+}
+#swipe_table_title{
+	  position: relative !important;
+	 z-index: 10000 !important;
+}
+
 #swiper-body{
 
-	z-index: -1000;
-	position: relative;
+	z-index: 10 !important;
+	position: relative !important;
 }
+#fixed-body{
+	 z-index: 10 !important;
+	 position: relative !important;
+}
+
 #swipe_table{
 	margin-left: 2rem;
 }
@@ -187,10 +207,12 @@ tr.alt td{
 	margin-right: 8em;
 }
 #filter_con{
-	 overflow: scroll;
+	 overflow: scroll; 
 }
 /*************************** sec view   end   ***************************************/
-
+.change_width{
+	 width: 14% !important;
+}
 
 
 

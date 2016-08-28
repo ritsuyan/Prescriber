@@ -51,11 +51,15 @@ Slider.prototype.bindDOM = function(){
                 self.offsetX = moveP.x - self.startX;
                 if(self.offsetX < 0){
                     //  change transform style with offsetX
-                    //计算手指的偏移量
+                    console.log('enter right 2 left')
 
       //              console.log('curr offset X ' + self.offsetX)
                     self.wrap.style.webkitTransition = ('-webkit-transform 0s ease-out');
                     self.wrap.style.webkitTransform = ('translate3d(' + self.offsetX + 'px, 0, 0)');
+                } else{
+                    console.log( ' enter left 2 right '+ self.offsetX)
+                    self.wrap.style.webkitTransition = ('-webkit-transform 0s ease-out');
+                    self.wrap.style.webkitTransform = ('translate3d(' + (self.offsetX - 500)+ 'px, 0, 0)');
                 }
             }
         } else if(self.dire === 'vertical'){
@@ -75,7 +79,8 @@ Slider.prototype.bindDOM = function(){
             }
         }
 
-
+        document.getElementById('swipe_table_title').style.position = 'fixed !important';
+        document.getElementById('fixed_table_title').style.position = 'fixed !important';
     };
 
     //手指抬起的处理事件

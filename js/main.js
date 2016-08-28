@@ -351,8 +351,7 @@ function cre_view(opts){
 
 
         if($name === '行距'){
-                     var $tb  =  document.getElementById('fixed-body');
-                     var $tb_arr = $tb.getElementsByTagName('td');
+                     var $tb_arr = document.getElementsByTagName('td');
                      var len  = $tb_arr.length;
 
                     for(var i = 0 ; i < len; i++){
@@ -395,13 +394,29 @@ function cre_view(opts){
 
             console.log(filter_push)
 
+            delete_fixed_tr({
+                 'arr' : filter_push,
+                 'dom' : document.getElementById('fixed-body')
+            })
+
             filter_fun({
                   'dom': document.getElementById('swiper-body'),
                   'dom_title':document.getElementById('fixed-body'),
                   'arr': filter_push,
                   'attr_arr': document.getElementById('swipe_table_title').getElementsByTagName('th')
             })
+
+            delete_tr({
+              'dom' : document.getElementById('swiper-body')
+          })
+
+            change_width({
+               'dom' : document.getElementsByClassName('fixed_con')[0],
+               'className': 'change_width'
+            })
         }
+
+          
 
         clear_fun({
              'dom' : document.getElementById('fixed_btn')
@@ -411,6 +426,39 @@ function cre_view(opts){
 
 }
 
+function change_width(opts) {
+  var dom = opts.dom;
+  var className = opts.className;
+
+  dom.className += ' change_width'; 
+}
+
+function delete_fixed_tr(opts) {
+    var arr = opts.arr;
+    var dom = opts.dom;
+
+
+    var tr_arr = dom.getElementsByTagName('tr');
+    var td_arr = dom.getElementsByTagName('td');
+    var len   = tr_arr.length;
+
+    console.log(tr_arr.length)  // 17
+    console.log(arr.length)     //  3
+    console.log(tr_arr)
+
+    $(td_arr).remove();
+
+    for( var i = 0 ; i < arr.length ; i ++){
+        var td = document.createElement('td');
+        td.innerHTML = arr[i];
+        tr_arr[i].appendChild(td)
+        if(tr_arr[i].getElementsByTagName('td')[0].innerHTML === 'undefined'){
+           tr_arr[i].parentNode.removeChild(tr_arr[i])
+
+        }
+    }
+
+}
 
 
 function clear_fun(opts) {
@@ -460,17 +508,59 @@ function filter_fun(opts){
     // real attr index     [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
 
     console.log( arr )
-    
+
   for(var w = 0 ; w < arr.length; w++){
 
       for( var y = 0 ; y < dom_title_arr.length; y++){
           dom.rows[w].cells[y].innerHTML = json_data[ real_index[w] ][ all_attr_arr[y] ]
+          dom.rows[w].className += " mark";
       }
 
 
   }
 
+  delete_by_num({
+     'dom' : document.getElementById('swiper-body'),
+     'className' : 'mark'
+  })
+   
+  
 
+}
+
+function delete_by_num(opts) {
+  var dom = opts.dom;
+  var className = opts.className;
+
+  var tr_arr = dom.getElementsByTagName('tr');
+  var len   = tr_arr.length;
+
+
+  for( var i = 0 ; i < len; i++){
+    console.log(tr_arr[i].className)
+     if( tr_arr[i].className.indexOf('mark') < 0){
+      console.log('enter')
+       for( var w = 0; w < tr_arr[i].length; w++){
+        tr_arr[i].removeChild(tr_arr[i].childNodes[w])
+       }
+       
+     }
+  }
+}
+
+function delete_tr(opts) {
+   
+     var dom = opts.dom;
+
+     var td_arr = dom.getElementsByTagName('tr');
+
+     var len = td_arr.len;
+
+     for( var i = 0 ;  i < len ; i++){
+        if(td_arr[i].getAttribute('mark') !== true){
+          td_arr[i].parentNode.removeChild(td_arr[i])
+        }
+     }
 }
 
 function re_bind_tap(){
@@ -621,7 +711,7 @@ var json_data =    [
 
     },
     {
-        "name":"商品3",
+        "name":"商品5",
         "sales":"900.52",
         "prev_sales":"1000",
         "sales_triangle":2,
@@ -648,7 +738,7 @@ var json_data =    [
 
     },
     {
-        "name":"商品3",
+        "name":"商品6",
         "sales":"900.52",
         "prev_sales":"1000",
         "sales_triangle":2,
@@ -675,7 +765,7 @@ var json_data =    [
 
     },
     {
-        "name":"商品3",
+        "name":"商品7",
         "sales":"900.52",
         "prev_sales":"1000",
         "sales_triangle":2,
@@ -877,7 +967,9 @@ function filter_arr(opts) {
 
 /*************************************   insert attr  start          *******************************/
 
-    function insert_attr(arr){
+function insert_attr(arr){
+
+
 
     document.getElementById('fixed_table_title').getElementsByTagName('th')[0].innerHTML = arr.shift();
 
@@ -885,7 +977,10 @@ function filter_arr(opts) {
 
     var swipe_title = document.getElementById('swipe_table_title').getElementsByTagName('tr')[0];
 
-    $(swipe_title).empty()
+    var swipe_body = document.getElementById('swiper-body').getElementsByTagName('td');
+
+    
+    $(swipe_body).remove()
 
 
 
@@ -894,7 +989,10 @@ function filter_arr(opts) {
             var curr_th =  document.createElement('th');
             curr_th.innerHTML = arr[i]
             swipe_title.appendChild(curr_th)
-    }
+    }                
+
+
+    
 
 
     //    start  insert  td value
@@ -925,24 +1023,18 @@ function filter_arr(opts) {
 
     console.log(arr)
     for( var j = 0 ; j < json_data.length; j++){
-        var curr_line = swipe_td_arr[j].getElementsByTagName('td');
-        var curr_good =  json_data[j];
-
-        console.log(curr_line)
-        console.log(curr_good)
-
-
-
+    
         for(var k = 0 ; k < json_data.length ; k++) {
-            curr_line[k].innerHTML = json_data[j][arr[k]]
-        }
-    }
 
-    var clear_td_arr = document.getElementById("swiper-body").getElementsByTagName('td');
-    for(var w = 0 ; w < clear_td_arr.length; w ++){
-          if(clear_td_arr[w].innerHTML === 'undefined'){
-              clear_td_arr[w].parentNode.removeChild(clear_td_arr[w])
-          }
+              var $td  =  document.createElement('td');
+              $td.innerHTML = json_data[j][ arr[k] ];
+
+              swipe_td_arr[j].appendChild($td)
+
+              if($td.innerHTML === "undefined"){
+                 $td.parentNode.removeChild($td)
+              }
+        }
     }
 
     //  end  insert  td value
