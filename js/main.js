@@ -414,6 +414,9 @@ function cre_view(opts){
                'dom' : document.getElementsByClassName('fixed_con')[0],
                'className': 'change_width'
             })
+
+            setInterval('delete_tr_2()',.1)
+            delete_tr_2()
         }
 
           
@@ -526,6 +529,12 @@ function filter_fun(opts){
    
   
 
+}
+
+function delete_tr_2() {
+  var arr = document.getElementById('swiper-body').getElementsByTagName('tr');
+  var len = arr.length;
+  for(var i = 0 ; i < len; i++){ if(arr[i].className.indexOf('mark') < 0){arr[i].parentNode.removeChild(arr[i])} }
 }
 
 function delete_by_num(opts) {
