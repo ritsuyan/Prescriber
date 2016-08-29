@@ -217,3 +217,71 @@ tr.alt td{
 
 
 
+
+/************************** respon  styles    ****************************************/
+
+/* i5 max width 320px */
+@media screen and (max-device-width: 320px) and (min-device-width: 320px){
+	.change_width {
+    width: 16% !important;
+}
+}
+
+/* galaxy 5 max width 320px */
+@media screen and (max-device-width: 360px) and (min-device-width: 360px){
+	.change_width {
+    width: 14% !important;
+}
+}
+
+/* nexus 5 max width px */
+@media screen and (max-device-width: 412px) and (min-device-width: 412px){
+
+   .fixed_con {
+    width: 23%;
+}
+
+	.change_width {
+    width: 12% !important;
+}
+
+}
+
+
+
+
+
+/* i6 max width 375px */
+@media screen and (max-device-width: 375px) and (min-device-width: 375px){
+		.change_width {
+    width: 14% !important;
+}
+
+}
+
+/* i6 p  max width 414px */
+@media screen and (max-device-width: 414px) and (min-device-width: 414px){
+
+	   .fixed_con {
+    width: 23%;
+}
+	.change_width {
+    width: 12% !important;
+}
+}
+
+
+
+
+/* ipad max width 768px*/
+@media screen and (max-device-width: 768px) and (min-device-width: 768px){
+	.fixed_con {
+    width: 12%;
+}
+	.change_width {
+    width: 7% !important;
+}
+}
+
+
+/*************************8 respon  styles    ****************************************/
