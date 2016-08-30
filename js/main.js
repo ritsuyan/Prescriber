@@ -2,10 +2,14 @@
  * Created by Administrator on 2016/8/11.
  */
 
-/*
-*     todo 1  slide
-*     todo 2  graphic data
-*     todo 3  clear undefined td
+/*    // 31/8
+      todo 1  cancel btn  ok 
+      todo 2  filter page cannot tap btn 
+      todo 3  btn arr  => index.html 360
+
+*     todo 1  slide up down  = >  
+*     todo 2  graphic data 
+*     todo 3  choose column reduant =>  fixed & swiper thead
 *
 * */
 
@@ -342,12 +346,22 @@ function cre_view(opts){
     } 
 
 
+      var cancel_hammer = new Hammer(document.getElementById('btn_cancel'));
+    
+    cancel_hammer.on('tap',function  (ev) {
+         $('body').empty().append($main_page)
+    })    
+
+
+
     var apply_hammer = new Hammer(document.getElementById('btn_apply'));
 
     apply_hammer.on('tap',function (ev) {
 
         $('body').empty();
         $('body').append($main_page);
+
+
 
 
         if($name === '行距'){
@@ -379,6 +393,11 @@ function cre_view(opts){
             console.log(de_arr)
 
             insert_attr(de_arr)
+
+              deal_bug({
+              'dom' : document.getElementById('fixed-body'),
+              'addtion':document.getElementById('swiper-body')
+            })
 
         }else if(  $name === '过滤'){
              var filter_push  = [];
@@ -412,6 +431,11 @@ function cre_view(opts){
                'className': 'change_width'
             })
 
+            deal_bug({
+              'dom' : document.getElementById('swiper-body'),
+              'addtion':document.getElementById('fixed-body')
+            })
+
             setInterval('delete_tr_2()',.1)
             delete_tr_2()
         }
@@ -425,6 +449,25 @@ function cre_view(opts){
 
 
 }
+
+function deal_bug (opts) {
+  var dom = opts.dom;
+  var td_arr  = dom.getElementsByTagName('td');
+  var addtion = opts.addtion.getElementsByTagName('td')[0];
+  var paddingTop = addtion.style.paddingTop;
+  var paddingBottom = addtion.style.paddingBottom;
+
+  var len = td_arr.length;
+
+  for(var i = 0 ; i < len ; i++){
+      td_arr[i].style.paddingTop = paddingTop;
+      td_arr[i].style.paddingBottom = paddingBottom;
+  }
+
+
+
+}
+
 
 function change_width(opts) {
   var dom = opts.dom;
