@@ -3,9 +3,7 @@
  */
 
 /*    // 31/8
-      todo 1  cancel btn  ok 
-      todo 2  filter page cannot tap btn 
-      todo 3  btn arr  => index.html 360
+
 
 *     todo 1  slide up down  = >  
 *     todo 2  graphic data 
@@ -350,6 +348,7 @@ function cre_view(opts){
     
     cancel_hammer.on('tap',function  (ev) {
          $('body').empty().append($main_page)
+         cre_btn_opt()
     })    
 
 
@@ -400,6 +399,11 @@ function cre_view(opts){
             })
 
         }else if(  $name === '过滤'){
+
+
+            cre_btn_opt()
+
+
              var filter_push  = [];
 
 
@@ -438,6 +442,7 @@ function cre_view(opts){
 
             setInterval('delete_tr_2()',.1)
             delete_tr_2()
+
         }
 
           
@@ -449,6 +454,44 @@ function cre_view(opts){
 
 
 }
+td_stacking()
+function td_stacking () {
+   var th_arr =  document.getElementsByTagName('th');
+   var len  = th_arr.length;
+
+   for(var i = 0; i < len ; i++){
+
+      th_arr[i].style.position = 'relative';
+      th_arr[i].style.zIndex = 1000000;
+   }
+}
+
+function cre_btn_opt () {
+      var hammer_btn = new Hammer(document.getElementById('fixed_btn'));
+
+        hammer_btn.on('tap', function (evt) {
+
+            is_show = show_btn({
+                 'dom':document.getElementById('fixed_btn')
+            })
+
+            if(document.getElementById('fixed_btn').childNodes.length > 1) {
+                for (var i = 1; i < 4; i++) {
+                    var hammer_btn = new Hammer(document.getElementById('fixed_btn').childNodes[i]);
+                    hammer_btn.on('tap', function (ev) {
+                        var $name = ev.target.innerHTML.trim();
+
+                        cre_view({
+                             'name' : $name
+                         })
+                    })
+
+                }
+            }
+        })
+
+}
+
 
 function deal_bug (opts) {
   var dom = opts.dom;
