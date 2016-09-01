@@ -2,9 +2,9 @@
  * Created by Administrator on 2016/8/12.
  */
 
-//���캯��
+//¹¹Ôìº¯Êý
 function Slider(opts){
-    //���캯����Ҫ�Ĳ���
+    //¹¹Ôìº¯ÊýÐèÒªµÄ²ÎÊý
     this.wrap = opts.dom;
     this.dire = opts.direction;
     this.addtion = opts.addtion;
@@ -16,16 +16,16 @@ function Slider(opts){
 
 
 
-//������ -- �� DOM �¼�
+//µÚÈý²½ -- °ó¶¨ DOM ÊÂ¼þ
 Slider.prototype.bindDOM = function(){
     var self = this;
 
 
-    //��ָ���µĴ����¼�
+    //ÊÖÖ¸°´ÏÂµÄ´¦ÀíÊÂ¼þ
     var startHandler = function(evt){
 
 
-        //��¼��ָ���µ�����
+        //¼ÇÂ¼ÊÖÖ¸°´ÏÂµÄ×ø±ê
         self.startX = evt.touches[0].pageX;
         self.startY = evt.touches[0].pageY;
         console.log("start X"
@@ -34,9 +34,9 @@ Slider.prototype.bindDOM = function(){
 
     };
 
-    //��ָ�ƶ��Ĵ����¼�
+    //ÊÖÖ¸ÒÆ¶¯µÄ´¦ÀíÊÂ¼þ
     var moveHandler = function(evt){
-        //����chrome android����ֹ�����Ĭ����Ϊ
+        //¼æÈÝchrome android£¬×èÖ¹ä¯ÀÀÆ÷Ä¬ÈÏÐÐÎª
         evt.preventDefault();
 
         var moveP = {
@@ -49,6 +49,7 @@ Slider.prototype.bindDOM = function(){
             if(Math.abs(moveP.x-self.startX) > Math.abs(moveP.y - self.startY)){
                 // move horizontal
                 self.offsetX = moveP.x - self.startX;
+                if(self.offsetX > 550){self.offsetX = 300;}
                 if(self.offsetX < 0){
                     //  change transform style with offsetX
                     console.log('enter right 2 left')
@@ -58,8 +59,16 @@ Slider.prototype.bindDOM = function(){
                     self.wrap.style.webkitTransform = ('translate3d(' + self.offsetX + 'px, 0, 0)');
                 } else{
                     console.log( ' enter left 2 right '+ self.offsetX)
+
+                    if (self.wrap.style.webkitTransform >= 0) {
+                          self.wrap.style.webkitTransition = ('-webkit-transform 0s ease-out');
+                    self.wrap.style.webkitTransform = ('translate3d(0px,0,0)');
+                  //  self.addtion.style.webkitTransform = ('translate3d(0px,0,0)');
+                    };
                     self.wrap.style.webkitTransition = ('-webkit-transform 0s ease-out');
                     self.wrap.style.webkitTransform = ('translate3d(' + (self.offsetX - 500)+ 'px, 0, 0)');
+
+
                 }
             }
         } else if(self.dire === 'vertical'){
@@ -68,14 +77,17 @@ Slider.prototype.bindDOM = function(){
                 self.offsetY = moveP.y - self.startY;
                 if(self.offsetY < 0){
                     //  change transform style with offsetX
-                    //������ָ��ƫ����
+                    //¼ÆËãÊÖÖ¸µÄÆ«ÒÆÁ¿
 
         //            console.log('curr offset Y ' + self.offsetY)
+                    console.log('down to up')
                     self.wrap.style.webkitTransition = ('-webkit-transform 0s ease-out');
                     self.wrap.style.webkitTransform = ('translate3d(0px,'+ self.offsetY +'px,0)');
                     self.addtion.style.webkitTransform = ('translate3d(0px,'+ self.offsetY +'px,0)');
 
                 }else{
+                    console.log('up to down')
+
                     var fixed_body = document.getElementById('fixed-body');     
                     if(fixed_body.style.webkitTransform.indexOf('-') > 0){
                     self.wrap.style.webkitTransition = ('-webkit-transform 0s ease-out');
@@ -90,20 +102,20 @@ Slider.prototype.bindDOM = function(){
         document.getElementById('fixed_table_title').style.position = 'fixed !important';
     };
 
-    //��ָ̧��Ĵ����¼�
+    //ÊÖÖ¸Ì§ÆðµÄ´¦ÀíÊÂ¼þ
     var endHandler = function(evt){
         evt.preventDefault();
 
-        //�߽�ͷ�ҳֵ
+        //±ß½ç¾Í·­Ò³Öµ
         var boundary = scaleW/6;
 
-        //��ָ̧���ʱ��ֵ
+        //ÊÖÖ¸Ì§ÆðµÄÊ±¼äÖµ
         var endTime = new Date() * 1;
 
-        //�����б���
+        //ËùÓÐÁÐ±íÏî
         var lis = outer.getElementsByTagName('li');
 
-        //����ָ�ƶ�ʱ�䳬��300ms ��ʱ�򣬰�λ����
+        //µ±ÊÖÖ¸ÒÆ¶¯Ê±¼ä³¬¹ý300ms µÄÊ±ºò£¬°´Î»ÒÆËã
         if(endTime - self.startTime > 3000){
             if(self.offsetX >= boundary){
                 self.goIndex('-1');
@@ -113,8 +125,8 @@ Slider.prototype.bindDOM = function(){
                 self.goIndex('0');
             }
         }else{
-            //�Ż�
-            //�����ƶ�Ҳ��ʹ�÷�ҳ
+            //ÓÅ»¯
+            //¿ìËÙÒÆ¶¯Ò²ÄÜÊ¹µÃ·­Ò³
             if(self.offsetX > 50){
                 self.goIndex('-1');
             }else if(self.offsetX < -50){
@@ -126,13 +138,13 @@ Slider.prototype.bindDOM = function(){
 
     };
 
-    //���¼�
+    //°ó¶¨ÊÂ¼þ
     self.wrap.addEventListener('touchstart', startHandler);
     self.wrap.addEventListener('touchmove', moveHandler);
  //   outer.addEventListener('touchend', endHandler);
 };
 
-//��ʼ��Slider ʵ��
+//³õÊ¼»¯Slider ÊµÀý
 new Slider({
     dom : document.getElementById('swipe_table'),
     direction : 'horizon'
@@ -152,14 +164,3 @@ new Slider({
 
 
 
-/*window.onscroll = function (evt) {
-     var ab_height = document.getElementsByTagName('h4')[0].offsetHeight;
-     console.log(ab_height)
-
-     if(window.scrollY >= ab_height){
-          $('.table-head').css('position','fixed')
-     } else{
-         $('.table-head').css('position','inherit')
-     }
-}
-*/
