@@ -2,7 +2,9 @@
  * Created by Administrator on 2016/8/11.
  */
 
-/*    // 31/8
+/*    // 01/09 11
+      todo 1  choose column page should not scroll      ok
+      todo 2  data rewrite    ok
 
 
 *     todo 1  slide up down  = >  
@@ -304,6 +306,9 @@ function cre_view(opts){
         
 
         choose_col()
+
+        document.body.style.overflow = 'hidden';
+
     } else if( $name = "过滤"){
          $con = '<div id="filter_con">' + 
              '<p class="con_line">'  +  curr_fixed_name + '</p>' +
@@ -1119,3 +1124,4 @@ function insert_attr(arr){
 
 }
 /*************************************   insert attr  end            *******************************/
+
