@@ -19,58 +19,61 @@ function Slider(opts){
 //µÚÈý²½ -- °ó¶¨ DOM ÊÂ¼þ
 Slider.prototype.bindDOM = function(){
     var self = this;
+    var moveP = {};
 
 
     //ÊÖÖ¸°´ÏÂµÄ´¦ÀíÊÂ¼þ
     var startHandler = function(evt){
 
 
-        //¼ÇÂ¼ÊÖÖ¸°´ÏÂµÄ×ø±ê
+     
         self.startX = evt.touches[0].pageX;
         self.startY = evt.touches[0].pageY;
-        console.log("start X"
+        console.log("this is start point"
          + self.startX)
 
 
     };
 
     //ÊÖÖ¸ÒÆ¶¯µÄ´¦ÀíÊÂ¼þ
-    var moveHandler = function(evt){
+    var endHandler = function(evt){
         //¼æÈÝchrome android£¬×èÖ¹ä¯ÀÀÆ÷Ä¬ÈÏÐÐÎª
         evt.preventDefault();
 
-        var moveP = {
-             x : evt.targetTouches[0].pageX,
-             y : evt.targetTouches[0].pageY
-        }
+        moveP.x = evt.changedTouches[0].clientX;
+        moveP.y = evt.changedTouches[0].clientY; 
+
+        console.log('this is end point' + moveP.x)
 
       //  console.log(self.dire)
         if(self.dire === 'horizon'){
             if(Math.abs(moveP.x-self.startX) > Math.abs(moveP.y - self.startY)){
                 // move horizontal
                 self.offsetX = moveP.x - self.startX;
-                if(self.offsetX > 550){self.offsetX = 300;}
+               
                 if(self.offsetX < 0){
                     //  change transform style with offsetX
                     console.log('enter right 2 left')
 
       //              console.log('curr offset X ' + self.offsetX)
-                    self.wrap.style.webkitTransition = ('-webkit-transform 0s ease-out');
-                    self.wrap.style.webkitTransform = ('translate3d(' + self.offsetX + 'px, 0, 0)');
+                    self.wrap.style.webkitTransition = ('-webkit-transform 1s ease-out');
+                    self.wrap.style.webkitTransform = ('translate3d(' + self.offsetX * 3 + 'px, 0, 0)');
                 } else{
                     console.log( ' enter left 2 right '+ self.offsetX)
-
-                    if (self.wrap.style.webkitTransform >= 0) {
+                    console.log(self.wrap.style.webkitTransform)
+                    if (self.wrap.style.webkitTransform.indexOf('-') < 0) {
                           self.wrap.style.webkitTransition = ('-webkit-transform 0s ease-out');
-                    self.wrap.style.webkitTransform = ('translate3d(0px,0,0)');
+                    self.wrap.style.webkitTransform = 'translate3d(0px,0px,0px)';
                   //  self.addtion.style.webkitTransform = ('translate3d(0px,0,0)');
                     };
-                    self.wrap.style.webkitTransition = ('-webkit-transform 0s ease-out');
-                    self.wrap.style.webkitTransform = ('translate3d(' + (self.offsetX - 500)+ 'px, 0, 0)');
+                    self.wrap.style.webkitTransition = ('-webkit-transform 1s ease-out');
+                    self.wrap.style.webkitTransform = ('translate3d(' + (self.offsetX)+ 'px, 0, 0)');
 
 
                 }
             }
+
+            console.log()
         } else if(self.dire === 'vertical'){
             if(Math.abs(moveP.x-self.startX) < Math.abs(moveP.y - self.startY)){
                 // move horizontal
@@ -102,45 +105,11 @@ Slider.prototype.bindDOM = function(){
         document.getElementById('fixed_table_title').style.position = 'fixed !important';
     };
 
-    //ÊÖÖ¸Ì§ÆðµÄ´¦ÀíÊÂ¼þ
-    var endHandler = function(evt){
-        evt.preventDefault();
 
-        //±ß½ç¾Í·­Ò³Öµ
-        var boundary = scaleW/6;
-
-        //ÊÖÖ¸Ì§ÆðµÄÊ±¼äÖµ
-        var endTime = new Date() * 1;
-
-        //ËùÓÐÁÐ±íÏî
-        var lis = outer.getElementsByTagName('li');
-
-        //µ±ÊÖÖ¸ÒÆ¶¯Ê±¼ä³¬¹ý300ms µÄÊ±ºò£¬°´Î»ÒÆËã
-        if(endTime - self.startTime > 3000){
-            if(self.offsetX >= boundary){
-                self.goIndex('-1');
-            }else if(self.offsetX < 0 && self.offsetX < -boundary){
-                self.goIndex('+1');
-            }else{
-                self.goIndex('0');
-            }
-        }else{
-            //ÓÅ»¯
-            //¿ìËÙÒÆ¶¯Ò²ÄÜÊ¹µÃ·­Ò³
-            if(self.offsetX > 50){
-                self.goIndex('-1');
-            }else if(self.offsetX < -50){
-                self.goIndex('+1');
-            }else{
-                self.goIndex('0');
-            }
-        }
-
-    };
 
     //°ó¶¨ÊÂ¼þ
     self.wrap.addEventListener('touchstart', startHandler);
-    self.wrap.addEventListener('touchmove', moveHandler);
+    self.wrap.addEventListener('touchend', endHandler);
  //   outer.addEventListener('touchend', endHandler);
 };
 
@@ -163,4 +132,22 @@ new Slider({
 });
 
 
+function cul_dis(opts) {
 
+    /*
+        @1 slide one td distance
+        @2 
+
+    */
+
+    var dis = opts.dis;
+    var dom = opts.dom;
+    var width = dom.style.width;
+    var per = dis/width;
+
+    if(per < 0.5){
+        per = o.5 
+    } else{}
+
+
+}
