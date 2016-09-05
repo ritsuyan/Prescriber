@@ -35,7 +35,7 @@
                <table id="fixed_table">
                    <thead  id="fixed_table_title" class="table-head">
                      <tr>
-                          <th>Prescriber</th>
+                          <th>name</th>
                      </tr>
                    </thead>
                    <tbody id="fixed-body" class="table-body">
@@ -57,39 +57,39 @@
                    <tr>
                        <td>商品6</td>
                    </tr>
-                   <tr>
-                       <td>CACCAMO,ALLAN</td>
-                   </tr>
-                   <tr>
-                       <td>CACCAMO,ALLAN</td>
-                   </tr>
-                   <tr>
-                       <td>CACCAMO,ALLAN</td>
-                   </tr>
-                   <tr>
-                       <td>CACCAMO,ALLAN</td>
-                   </tr>
-                   <tr>
-                       <td>CACCAMO,ALLAN</td>
-                   </tr>
-                   <tr>
-                       <td>CACCAMO,ALLAN</td>
-                   </tr>
-                   <tr>
-                       <td>CACCAMO,ALLAN</td>
-                   </tr>
-                   <tr>
-                       <td>CACCAMO,ALLAN</td>
-                   </tr>
-                   <tr>
-                       <td>CACCAMO,ALLAN</td>
-                   </tr>
-                   <tr>
-                       <td>CACCAMO,ALLAN</td>
-                   </tr>
-                     <tr>
-                         <td>CACCAMO,ALLAN</td>
+                 <tr>
+                         <td>商品1</td>
                      </tr>
+                   <tr>
+                       <td>商品2</td>
+                   </tr>
+                   <tr>
+                       <td>商品3</td>
+                   </tr>
+                   <tr>
+                       <td>商品4</td>
+                   </tr>
+                   <tr>
+                       <td>商品5</td>
+                   </tr>
+                   <tr>
+                       <td>商品6</td>
+                   </tr>
+                    <tr>
+                       <td>商品2</td>
+                   </tr>
+                   <tr>
+                       <td>商品3</td>
+                   </tr>
+                   <tr>
+                       <td>商品4</td>
+                   </tr>
+                   <tr>
+                       <td>商品5</td>
+                   </tr>
+                   <tr>
+                       <td>商品6</td>
+                   </tr>
                    </tbody>         <!-- tbody end -->
 
                </table>   <!-- fixed_table_title end -->
@@ -131,9 +131,9 @@
                    </thead>
 
                    <tbody  id="swiper-body" class="table-body">
-                      <tr class="alt">
-                           <td>12BA1</td>
-                           <td>FP</td>
+                      <tr class="">
+                           <td>950</td>
+                           <td>900</td>
                            <td>OAKLAND,ME</td>
                            <td>04963</td>
                            <td>100%</td>
@@ -155,7 +155,7 @@
                        <td>-100%</td>
                        <td>-100%</td>
                    </tr>
-                   <tr class="alt ">
+                   <tr class="">
                        <td>12BA1</td>
                        <td>FP</td>
                        <td>OAKLAND,ME</td>
@@ -179,7 +179,7 @@
                        <td>-100%</td>
                        <td>-100%</td>
                    </tr>
-                   <tr class="alt ">
+                   <tr class="">
                        <td>12BA1</td>
                        <td>FP</td>
                        <td>OAKLAND,ME</td>
@@ -203,7 +203,7 @@
                        <td>-100%</td>
                        <td>-100%</td>
                    </tr>
-                   <tr class="alt">
+                   <tr class="">
                        <td>12BA1</td>
                        <td>FP</td>
                        <td>OAKLAND,ME</td>
@@ -227,7 +227,7 @@
                        <td>-100%</td>
                        <td>-100%</td>
                    </tr>
-                   <tr class="alt">
+                   <tr class="">
                        <td>12BA1</td>
                        <td>FP</td>
                        <td>OAKLAND,ME</td>
@@ -251,7 +251,7 @@
                        <td>-100%</td>
                        <td>-100%</td>
                    </tr>
-                   <tr class="alt">
+                   <tr class="">
                        <td>12BA1</td>
                        <td>FP</td>
                        <td>OAKLAND,ME</td>
@@ -275,7 +275,7 @@
                        <td>-100%</td>
                        <td>-100%</td>
                    </tr>
-                   <tr class="alt">
+                   <tr class="">
                        <td>12BA1</td>
                        <td>FP</td>
                        <td>OAKLAND,ME</td>
@@ -299,7 +299,7 @@
                        <td>-100%</td>
                        <td>-100%</td>
                    </tr>
-                      <tr class="alt">
+                      <tr class="">
                           <td>12BA1</td>
                           <td>FP</td>
                           <td>OAKLAND,ME</td>
@@ -323,7 +323,7 @@
                           <td>-100%</td>
                           <td>-100%</td>
                       </tr>
-                      <tr class="alt">
+                      <tr class="">
                           <td>12BA1</td>
                           <td>FP</td>
                           <td>OAKLAND,ME</td>
@@ -357,7 +357,7 @@
                  'dom':document.getElementById('fixed_btn')
             })
 
-            if(document.getElementById('fixed_btn').childNodes.length > 1) {
+           if( is_show === true) {
                 for (var i = 1; i < 4; i++) {
                     var hammer_btn = new Hammer(document.getElementById('fixed_btn').childNodes[i]);
                     hammer_btn.on('tap', function (ev) {
@@ -369,7 +369,7 @@
                     })
 
                 }
-            }
+            }  
         })
 
 

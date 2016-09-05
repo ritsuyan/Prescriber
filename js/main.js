@@ -2,10 +2,34 @@
  * Created by Administrator on 2016/8/11.
  */
 
-/*
-*     todo 1  slide
+
+/*   // 04/09
+     todo 1  if hasnot open the first collspe then the sec collspe first choose opt will be the fixed title in the choose column page   => complete
+     todo 2  the choose column page cannot tap btn
+     todo 3  cancel or apply while do not has any execute will cause bug      = > complete
+     todo 4  the width too little after apply
+
+
+
+
+/*    // 02/09
+      todo 1  change padding page cannot tap btn   = > complete
+      todo 2  change padding page column wrong     = > complete
+      todo 3  choose column page should fixed td when td arr width val less than page
+      todo 4  after choose column page turn to filter page ,the result td has reduant td   = > complete
+      todo 5  the filter page should clean the reduant td                                  = > complete
+      todo 6  the choose column page should has the default column and tap the each opt should close itself and open the another
+      todo 7  the slide optimize   = > the touch.js swipe fun
+
+/*    // 01/09
+      todo 1  choose column page should not scroll   = > complete
+      todo 2  data rewrite   = > complete
+
+  
+
+*     todo 1  slide up down   = >  complete
 *     todo 2  graphic data
-*     todo 3  clear undefined td
+*     todo 3  choose column reduant =>  complete
 *
 * */
 
@@ -203,8 +227,13 @@ function show_btn(opts){
     var $tit_arr = ['行距','过滤','选列']
 
     if(is_show === false) {
+        if($pa !== null){
+            if($pa.childNodes.length > 3) {return true}
+        }
+
         for (var i = 0; i < len; i++) {
-            $pa.appendChild(document.createElement('div'))
+          var $btn = document.createElement('div');
+            $pa.appendChild($btn)
         }
 
         for (var i = 1; i < len + 1; i++) {
@@ -232,7 +261,8 @@ var $name;
 
 function cre_view(opts){
 
-
+    var default_attr = document.getElementById('fixed_table_title').getElementsByTagName('th')[0].innerHTML;
+    console.log(default_attr)
     var $main_page =  $('body').children();
     $('body').empty();
     $name = opts.name;
@@ -268,7 +298,7 @@ function cre_view(opts){
   '<div class="panel panel-default">' + 
     '<div class="panel-heading">' +
       '<h4 class="panel-title">' +
-        '<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" class="collapsed" id="coll_1">  选择关键列 ' +               
+        '<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" class="collapsed" id="coll_1">  选择关键列           >' +
         '</a>'      +
       '</h4>'      +
     '</div>'      +
@@ -299,9 +329,21 @@ function cre_view(opts){
 
         var $span_arr = document.getElementById('collapseOne').getElementsByTagName('span');
         var $span_arr_two = document.getElementById('collapseTwo').getElementsByTagName('span');
-        
+
+
+
+
 
         choose_col()
+
+        document.body.style.overflow = 'hidden';
+
+
+        $('#collapseTwo').collapse('hide')
+        $('#collapseOne').collapse('hide')
+
+
+
     } else if( $name = "过滤"){
          $con = '<div id="filter_con">' + 
              '<p class="con_line">'  +  curr_fixed_name + '</p>' +
@@ -320,8 +362,6 @@ function cre_view(opts){
 
 
 
-    $('#collapseTwo').collapse('hide')
-    $('#collapseOne').collapse('hide')
 
 
 
@@ -342,35 +382,76 @@ function cre_view(opts){
     } 
 
 
+      var cancel_hammer = new Hammer(document.getElementById('btn_cancel'));
+    
+    cancel_hammer.on('tap',function  (ev) {
+         $('body').empty().append($main_page)
+         cre_btn_opt()
+    })    
+
+
+
     var apply_hammer = new Hammer(document.getElementById('btn_apply'));
+    var collapseOne =  document.getElementById('collapseOne');
+    var collapseTwo =  document.getElementById('collapseTwo');
+    var filter_con  =  document.getElementById('filter_con');
 
     apply_hammer.on('tap',function (ev) {
+
+
 
         $('body').empty();
         $('body').append($main_page);
 
+     
+
 
         if($name === '行距'){
-                     var $tb_arr = document.getElementsByTagName('td');
+
+
+         //     cre_btn_opt()
+                     var $tb_arr = document.getElementsByTagName('tr');
                      var len  = $tb_arr.length;
 
                     for(var i = 0 ; i < len; i++){
-                        $tb_arr[i].style.paddingBottom =  $add_line  +  'em';
-                         $tb_arr[i].style.paddingTop =  $add_line  +  'em';
+                        var $curr_tr_td_arr = $tb_arr[i].getElementsByTagName('td');
+                        var td_length = $curr_tr_td_arr.length;
+                        for( var w = 0 ; w < len; w++){
+                            console.log($curr_tr_td_arr[w])
+                            $curr_tr_td_arr[w].style.paddingBottom =  $add_line  +  'em';
+                            $curr_tr_td_arr[w].style.paddingTop =  $add_line  +  'em';
+                        }
+
                         }
 
         }else if( $name === "选列"){
+            var coll_arr = collapseTwo.getElementsByTagName('input');
+            var exe2_arr = []
+            for(var  i = 0 ; i < coll_arr.length; i++){
+                if(coll_arr[i].checked === true){
+                    exe2_arr.push(coll_arr[i])
+                }
+            }
 
+            if(exe2_arr.length === 0){
+                return false;
+            }
                     //  find the single fixed column
+            cre_btn_opt()
 
             var de_arr  = [];
             console.log($span_arr)
 
-            for(var i = 0 ; i < $span_arr.length; i++){
-                 if($span_arr[i].getElementsByTagName('input')[0].checked){
-                      de_arr.push($span_arr[i].getElementsByTagName('a')[0].innerHTML)  // such as sales
-                 }
+    if(collapseOne.childNodes.length === 0){
+        de_arr.unshift('name');     //  the main page default fixed attr title
+    }else{
+        for(var i = 0 ; i < $span_arr.length; i++) {
+            if ($span_arr[i].getElementsByTagName('input')[0].checked) {
+                de_arr.push($span_arr[i].getElementsByTagName('a')[0].innerHTML)  // such as sales
             }
+        }
+    }
+
             for(var i = 0 ; i < $span_arr_two.length; i++){
                 if($span_arr_two[i].getElementsByTagName('input')[0].checked){
                     de_arr.push($span_arr_two[i].getElementsByTagName('a')[0].innerHTML)  // such as sales
@@ -380,7 +461,36 @@ function cre_view(opts){
 
             insert_attr(de_arr)
 
+              deal_bug({
+              'dom' : document.getElementById('fixed-body'),
+              'addtion':document.getElementById('swiper-body')
+            })
+
+            fixed_slide_tr({
+                 'dom' : document.getElementById('swiper-body')
+            })
+
         }else if(  $name === '过滤'){
+
+
+            var input_two_arr = filter_con.getElementsByTagName('input');
+            var exe_arr = []
+            for(var  i = 0 ; i < input_two_arr.length; i++){
+                if(input_two_arr[i].checked === true){
+                    exe_arr.push(input_two_arr[i])
+                }
+            }
+            console.log(exe_arr)
+            if(exe_arr.length === 0){
+                return false;
+            }
+
+            console.log(filter_con)
+       /*     default_apply({
+                'dom' :  filter_con
+            })
+        */
+
              var filter_push  = [];
 
 
@@ -391,6 +501,8 @@ function cre_view(opts){
                       filter_push.push($filter_arr[i].getElementsByTagName('a')[0].innerHTML)  // such as sales
                  }
             }
+
+
 
             console.log(filter_push)
 
@@ -412,19 +524,108 @@ function cre_view(opts){
                'className': 'change_width'
             })
 
-            setInterval('delete_tr_2()',.1)
-            delete_tr_2()
+            deal_bug({
+              'dom' : document.getElementById('swiper-body'),
+              'addtion':document.getElementById('fixed-body')
+            })
+
+           setInterval('delete_tr_2()',.1)
         }
 
-          
-
-        clear_fun({
+     /*   clear_fun({
              'dom' : document.getElementById('fixed_btn')
         })
+      */
     })
 
 
 }
+
+
+td_stacking()
+function td_stacking () {
+   var th_arr =  document.getElementsByTagName('th');
+   var len  = th_arr.length;
+
+   for(var i = 0; i < len ; i++){
+
+      th_arr[i].style.position = 'relative';
+      th_arr[i].style.zIndex = 1000000;
+   }
+}
+
+function default_apply(opts){
+     var dom = opts.dom;
+    var input_two_arr = dom.getElementsByTagName('input');
+    var exe_arr = []
+    for(var  i = 0 ; i < input_two_arr.length; i++){
+        if(input_two_arr[i].checked === true){
+            exe_arr.push(input_two_arr[i])
+        }
+    }
+    console.log(exe_arr)
+    if(exe_arr.length === 0){
+        return false;
+    }
+}
+
+
+function fixed_slide_tr(opts){
+     var dom = opts.dom;
+    var trlen = dom.getElementsByTagName('tr')[0].childNodes.length;
+    console.log(trlen + 'how long')
+
+    dom.removeEventListener('touchstart', startHandler)
+    dom.removeEventListener('touchsmove', moveHandler)
+
+}
+
+function cre_btn_opt () {
+
+      var hammer_btn = new Hammer(document.getElementById('fixed_btn'));
+
+        hammer_btn.on('tap', function (evt) {
+
+            is_show = show_btn({
+                 'dom':document.getElementById('fixed_btn')
+            })
+
+            if(document.getElementById('fixed_btn').childNodes.length > 1) {
+                for (var i = 1; i < 4; i++) {
+                    var hammer_btn = new Hammer(document.getElementById('fixed_btn').childNodes[i]);
+                    hammer_btn.on('tap', function (ev) {
+                        var $name = ev.target.innerHTML.trim();
+
+                        cre_view({
+                             'name' : $name
+                         })
+                    })
+
+                }
+            }
+        })
+
+}
+
+
+function deal_bug (opts) {
+  var dom = opts.dom;
+  var td_arr  = dom.getElementsByTagName('td');
+  var addtion = opts.addtion.getElementsByTagName('td')[0];
+  var paddingTop = addtion.style.paddingTop;
+  var paddingBottom = addtion.style.paddingBottom;
+
+  var len = td_arr.length;
+
+  for(var i = 0 ; i < len ; i++){
+      td_arr[i].style.paddingTop = paddingTop;
+      td_arr[i].style.paddingBottom = paddingBottom;
+  }
+
+
+
+}
+
 
 function change_width(opts) {
   var dom = opts.dom;
@@ -531,7 +732,13 @@ function filter_fun(opts){
 function delete_tr_2() {
   var arr = document.getElementById('swiper-body').getElementsByTagName('tr');
   var len = arr.length;
-  for(var i = 0 ; i < len; i++){ if(arr[i].className.indexOf('mark') < 0){arr[i].parentNode.removeChild(arr[i])} }
+  console.log('what' + len)
+  for(var i = 0 ; i < len; i++){
+    if(arr[i].className.indexOf("mark") < 0 ){
+      arr[i].parentNode.removeChild(arr[i])
+    } 
+  
+  }
 }
 
 function delete_by_num(opts) {
@@ -878,14 +1085,34 @@ function choose_col() {
         add_checkbox({
             'dom': document.getElementById('coll_2')
         })
+     //   $('#collapseTwo').collapse('hide')
+        $('#collapseOne').collapse('hide')
     })
 
     var ha_tap_1 = new Hammer(document.getElementById('coll_1'));
 
     ha_tap_1.on('tap', function (ev) {
+
+        var input_arr = document.getElementById('collapseOne').getElementsByTagName('input');
+        var len = input_arr.length;
+
+        console.log('yes enter ')
+        console.log(input_arr)
+        input_arr.onclick = function () {
+            for( var i = 0 ; i < len ; i++){
+                if(input_arr[i].checked === true)
+                    input_arr[i].checked = false;
+            }
+            input_arr[i].checked = true;
+            console.log(233)
+        }
+
         add_checkbox({
             'dom': document.getElementById('coll_1')
         })
+
+        $('#collapseTwo').collapse('hide')
+    //    $('#collapseOne').collapse('hide')
 
     })
 
@@ -922,12 +1149,22 @@ function add_checkbox(opts) {
               
         document.getElementById(herf_con).appendChild($span)      
     }
-
-     document.getElementById(herf_con).firstChild.getElementsByTagName('a')[0].innerHTML = "默认";
-
+if(curr_opt === document.getElementById('coll_1')) {
+    document.getElementById(herf_con).firstChild.getElementsByTagName('input')[0].checked = true;
+    var $de = document.createElement('em');
+     $de.innerHTML = '    默认';
+    if(document.getElementById(herf_con).firstChild.childNodes.length === 2) {
+        document.getElementById(herf_con).firstChild.appendChild($de)
+    }
+}
      console.log(herf_con)
 
+
+
 }
+
+
+
 
 function filter_arr(opts) {
     var dom = opts.dom;
@@ -962,7 +1199,6 @@ function filter_arr(opts) {
 function insert_attr(arr){
 
 
-
     document.getElementById('fixed_table_title').getElementsByTagName('th')[0].innerHTML = arr.shift();
 
     var fixed_attr = document.getElementById('fixed_table_title').getElementsByTagName('th')[0].innerHTML;
@@ -971,8 +1207,9 @@ function insert_attr(arr){
 
     var swipe_body = document.getElementById('swiper-body').getElementsByTagName('td');
 
-    
-    $(swipe_body).remove()
+
+    $(swipe_title).empty();
+    $(swipe_body).remove();
 
 
 
@@ -998,17 +1235,9 @@ function insert_attr(arr){
             // get  good fixed_attr
 
 
-    var fixed_td_arr = document.getElementById('fixed-body').getElementsByTagName('td');
-    var len         = fixed_td_arr.length;
-    console.log(fixed_attr)
-    for( var i = 0 ;  i < json_data.length; i++){
-         fixed_td_arr[i].innerHTML = json_data[i][fixed_attr];
-    }
 
 
-
-
-            //  get each goods swipe attr
+              //  get each goods swipe attr
     var swipe_td_arr = document.getElementById("swiper-body").getElementsByTagName('tr');
 
     var swipe_len         = swipe_td_arr.length;
@@ -1029,7 +1258,37 @@ function insert_attr(arr){
         }
     }
 
+
+
+
+
+    var fixed_td_arr = document.getElementById('fixed-body').getElementsByTagName('tr');
+    var len         = fixed_td_arr.length;
+    console.log(fixed_attr)
+
+    $(fixed_td_arr).empty()
+
+
+    for( var i = 0 ;  i < fixed_td_arr.length; i++){
+         var curr_th =  document.createElement('td');
+            curr_th.innerHTML = json_data[i][fixed_attr];
+             fixed_td_arr[i].appendChild(curr_th)
+             console.log('this is ' + i)
+    }
+
+
+    // set swipe title
+
+
+
+
+
+
+
+
+
     //  end  insert  td value
 
 }
 /*************************************   insert attr  end            *******************************/
+

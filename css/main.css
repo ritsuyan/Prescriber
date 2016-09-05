@@ -52,7 +52,9 @@ span{
 /**************************** public css end  *************************************************/
 
 /**************************** main css start  *************************************************/
-
+#swiper-body tr:nth-child(2n) td{
+	background: #66ccff;
+}
 h4:first-child{
 	  z-index: 1000000;
 	  position: relative;
@@ -85,14 +87,12 @@ table td{
 	 width: 100%;
 }
 .fixed_con{
-	 width:25%;
+	 width:4%;
 }
 .swipe_con{
      width: 72%;
 }
-tr.alt td{
-	background: #66ccff;
-}
+
 
 
 #fixed_table_title{
