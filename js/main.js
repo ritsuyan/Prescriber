@@ -2,6 +2,9 @@
  * Created by Administrator on 2016/8/11.
  */
 
+/* btn 
+
+
 
 /*   // 04/09
      todo 1  if hasnot open the first collspe then the sec collspe first choose opt will be the fixed title in the choose column page   => complete
@@ -218,6 +221,37 @@ for( var x = 0 ; x < td_len; x ++){
 
 
 /**************************************  fun button show  start   *********************************/
+      var  fixed_btn = document.getElementById('fixed_btn');
+      if(fixed_btn  !== null || fixed_btn !== undefined){
+
+               var hammer_btn = new Hammer(fixed_btn);
+
+        hammer_btn.on('tap', function (evt) {
+
+            is_show = show_btn({
+                 'dom':document.getElementById('fixed_btn')
+            })
+
+            if(is_show){
+                for (var i = 1; i < 4; i++) {
+                    var hammer_btn = new Hammer(document.getElementById('fixed_btn').childNodes[i]);
+                    hammer_btn.on('tap', function (ev) {
+                        var $name = ev.target.innerHTML.trim();
+
+                        cre_view({
+                             'name' : $name
+                         })
+                    })
+                  }
+                }
+             
+        })
+
+
+
+      }
+
+
 
 var is_show = false;
 function show_btn(opts){
@@ -227,12 +261,17 @@ function show_btn(opts){
     var $tit_arr = ['行距','过滤','选列']
 
     if(is_show === false) {
-        if($pa !== null){
-            if($pa.childNodes.length > 3) {return true}
+        if($pa !== null || $pa !== undefined){
+          console.log($pa)
+            if($pa.childNodes){
+               if($pa.childNodes.length > 3) {return true}
+            }
+           
         }
 
         for (var i = 0; i < len; i++) {
           var $btn = document.createElement('div');
+         if($pa !== null || $pa !== undefined)
             $pa.appendChild($btn)
         }
 
@@ -249,6 +288,14 @@ function show_btn(opts){
         return false;
     }
 
+}
+
+
+function check_cre_btn (opts) {
+  var dom = opts.dom;
+  if(dom.childNodes.length < 2){
+
+  }
 }
 
 /**************************************  fun button show    end     *********************************/
@@ -519,6 +566,7 @@ function cre_view(opts){
             })
 
 
+
             change_width({
                'dom' : document.getElementsByClassName('fixed_con')[0],
                'className': 'change_width'
@@ -529,7 +577,14 @@ function cre_view(opts){
               'addtion':document.getElementById('fixed-body')
             })
 
-           setInterval('delete_tr_2()',.1)
+
+          setInterval(checked_tr_len({
+              'dom' : document.getElementById('swiper-body'),
+              'add_dom' : document.getElementById('fixed-body')
+            }),.1)   
+
+             setInterval('delete_tr_2()',.1)
+           
         }
 
      /*   clear_fun({
@@ -730,15 +785,35 @@ function filter_fun(opts){
 }
 
 function delete_tr_2() {
-  var arr = document.getElementById('swiper-body').getElementsByTagName('tr');
+  if( document.getElementById('swiper-body') ){
+     var arr = document.getElementById('swiper-body').getElementsByTagName('tr');
   var len = arr.length;
-  console.log('what' + len)
+  }
+ 
+ 
+
   for(var i = 0 ; i < len; i++){
+    if(arr[i] === null || arr[i] === undefined) return true;
     if(arr[i].className.indexOf("mark") < 0 ){
       arr[i].parentNode.removeChild(arr[i])
     } 
   
   }
+}
+
+function checked_tr_len (opts) {
+  var dom_tr = opts.dom.getElementsByTagName('tr');
+  var dom_len = opts.dom.getElementsByTagName('tr').length;
+  var add_len = opts.add_dom.getElementsByTagName('tr').length;
+
+  if(dom_len > add_len){
+     var su =  dom_len - add_len;
+
+     for(var i = add_len; i < su ; i ++){
+        dom_tr[i].parentNode.removeChild(dom_tr[i])
+     }
+  }
+
 }
 
 function delete_by_num(opts) {
