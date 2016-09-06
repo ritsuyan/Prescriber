@@ -20,12 +20,28 @@ function Slider(opts){
 Slider.prototype.bindDOM = function(){
     var self = this;
     var moveP = {};
-
+    var curr_len;
 
     //ÊÖÖ¸°´ÏÂµÄ´¦ÀíÊÂ¼þ
     var startHandler = function(evt){
 
+         curr_len = document.getElementById('swipe_table').style.webkitTransform;
 
+
+
+
+       if (curr_len.indexOf('-') < 0 || 
+          curr_len == 'translate3d(0,0,0)'
+       ) {
+                          self.wrap.style.webkitTransition = ('-webkit-transform 0s ease-out');
+                    self.wrap.style.webkitTransform = 'translate3d(0px,0px,0px)';
+                  //  self.addtion.style.webkitTransform = ('translate3d(0px,0,0)');
+                    };    
+
+       if( curr_len.substring(13,16) > 548){
+          curr_len = 'translate3d(-545px,0,0)';
+          console.log('000')
+       }             
      
         self.startX = evt.touches[0].pageX;
         self.startY = evt.touches[0].pageY;
@@ -46,28 +62,43 @@ Slider.prototype.bindDOM = function(){
         console.log('this is end point' + moveP.x)
 
       //  console.log(self.dire)
+      if( curr_len.substring(13,16) > 548){
+          curr_len = 'translate3d(-545px,0,0)';
+          console.log('000')
+       }  
+
+
         if(self.dire === 'horizon'){
             if(Math.abs(moveP.x-self.startX) > Math.abs(moveP.y - self.startY)){
                 // move horizontal
                 self.offsetX = moveP.x - self.startX;
-               
+
+                console.log( self.offsetX )
+                
+                if( Math.abs(self.offsetX) > 319 ) return true;
+                
+
+                if( Math.abs(self.offsetX) > 319 && self.offsetX < 0){ 
+                    self.offsetX = -545;
+                    console.log('^^^')
+                }
+                if( Math.abs(self.offsetX) > 319 && self.offsetX > 0){ 
+                    self.offsetX = 545;
+                }
+
                 if(self.offsetX < 0){
                     //  change transform style with offsetX
                     console.log('enter right 2 left')
 
       //              console.log('curr offset X ' + self.offsetX)
                     self.wrap.style.webkitTransition = ('-webkit-transform 1s ease-out');
-                    self.wrap.style.webkitTransform = ('translate3d(' + self.offsetX * 3 + 'px, 0, 0)');
+                    self.wrap.style.webkitTransform = ('translate3d(' + self.offsetX * 2 + 'px, 0, 0)');
                 } else{
                     console.log( ' enter left 2 right '+ self.offsetX)
                     console.log(self.wrap.style.webkitTransform)
-                    if (self.wrap.style.webkitTransform.indexOf('-') < 0) {
-                          self.wrap.style.webkitTransition = ('-webkit-transform 0s ease-out');
-                    self.wrap.style.webkitTransform = 'translate3d(0px,0px,0px)';
-                  //  self.addtion.style.webkitTransform = ('translate3d(0px,0,0)');
-                    };
+                 
                     self.wrap.style.webkitTransition = ('-webkit-transform 1s ease-out');
-                    self.wrap.style.webkitTransform = ('translate3d(' + (self.offsetX)+ 'px, 0, 0)');
+                    self.wrap.style.webkitTransform = ('translate3d(' + (self.offsetX * .7) + 'px, 0, 0)');
 
 
                 }
@@ -142,11 +173,11 @@ function cul_dis(opts) {
 
     var dis = opts.dis;
     var dom = opts.dom;
-    var width = dom.style.width;
+    var width =  '867' + px;
     var per = dis/width;
 
     if(per < 0.5){
-        per = o.5 
+        per = 0.5; 
     } else{}
 
 
