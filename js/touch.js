@@ -92,7 +92,7 @@ Slider.prototype.bindDOM = function(){
 
       //              console.log('curr offset X ' + self.offsetX)
                     self.wrap.style.webkitTransition = ('-webkit-transform 1s ease-out');
-                    self.wrap.style.webkitTransform = ('translate3d(' + self.offsetX * 2 + 'px, 0, 0)');
+                    self.wrap.style.webkitTransform = ('translate3d(' + self.offsetX * 3 + 'px, 0, 0)');
                 } else{
                     console.log( ' enter left 2 right '+ self.offsetX)
                     console.log(self.wrap.style.webkitTransform)
