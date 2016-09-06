@@ -75,7 +75,7 @@ Slider.prototype.bindDOM = function(){
 
                 console.log( self.offsetX )
                 
-                if( Math.abs(self.offsetX) > 319 ) return true;
+        //        if( Math.abs(self.offsetX) > 319 ) return true;
                 
 
                 if( Math.abs(self.offsetX) > 319 && self.offsetX < 0){ 
