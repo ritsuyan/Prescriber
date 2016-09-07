@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9e49ab3c-fa3f-4d80-8b62-0e147dddf0dd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/touch.js" afterPath="$PROJECT_DIR$/js/touch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="KPI.iws" />
     <ignored path=".idea/workspace.xml" />
