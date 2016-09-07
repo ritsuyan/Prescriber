@@ -349,28 +349,7 @@
     <script src="./js/touch.js"></script>
     <script src="./js/main.js" charset="utf-8"></script>
     <script>
-       var hammer_btn = new Hammer(document.getElementById('fixed_btn'));
 
-        hammer_btn.on('tap', function (evt) {
-
-            is_show = show_btn({
-                 'dom':document.getElementById('fixed_btn')
-            })
-
-           if( is_show === true) {
-                for (var i = 1; i < 4; i++) {
-                    var hammer_btn = new Hammer(document.getElementById('fixed_btn').childNodes[i]);
-                    hammer_btn.on('tap', function (ev) {
-                        var $name = ev.target.innerHTML.trim();
-
-                        cre_view({
-                             'name' : $name
-                         })
-                    })
-
-                }
-            }  
-        })
 
 
     </script>

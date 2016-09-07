@@ -223,14 +223,14 @@ table td{
 /* i5 max width 320px */
 @media screen and (max-device-width: 320px) and (min-device-width: 320px){
 	.change_width {
-    width: 16% !important;
+    width: 5% !important;
 }
 }
 
 /* galaxy 5 max width 320px */
 @media screen and (max-device-width: 360px) and (min-device-width: 360px){
 	.change_width {
-    width: 14% !important;
+    width: 4% !important;
 }
 }
 
@@ -238,12 +238,13 @@ table td{
 @media screen and (max-device-width: 412px) and (min-device-width: 412px){
 
    .fixed_con {
-    width: 23%;
+    width: 4%;
 }
 
 	.change_width {
-    width: 12% !important;
+    width: 4% !important;
 }
+
 
 }
 
@@ -254,7 +255,7 @@ table td{
 /* i6 max width 375px */
 @media screen and (max-device-width: 375px) and (min-device-width: 375px){
 		.change_width {
-    width: 14% !important;
+    width: 4% !important;
 }
 
 }
@@ -263,10 +264,13 @@ table td{
 @media screen and (max-device-width: 414px) and (min-device-width: 414px){
 
 	   .fixed_con {
-    width: 23%;
+    width: 4%;
 }
 	.change_width {
-    width: 12% !important;
+    width: 4% !important;
+}
+#swipe_table {
+    margin-left: 2rem;
 }
 }
 
@@ -285,3 +289,13 @@ table td{
 
 
 /*************************8 respon  styles    ****************************************/
+.change_margin{
+	margin-left: 3rem  !important;
+	-webkit-transform: translate3d(0,0,0) !important;
+}
+.change_tran{
+	-webkit-transform: translate3d(-495px,0,0) !important;
+}
+.right_tran{
+	-webkit-transform: translate3d(0,0,0) !important;
+}
