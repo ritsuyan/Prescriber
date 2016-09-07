@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9e49ab3c-fa3f-4d80-8b62-0e147dddf0dd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/touch.js" afterPath="$PROJECT_DIR$/js/touch.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="KPI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,8 +37,8 @@
       <file leaf-file-name="touch.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/touch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.375">
-              <caret line="166" column="77" selection-start-line="166" selection-start-column="77" selection-end-line="166" selection-end-column="77" />
+            <state vertical-scroll-proportion="0.5833333">
+              <caret line="168" column="78" selection-start-line="168" selection-start-column="78" selection-end-line="168" selection-end-column="78" />
               <folding>
                 <element signature="n#!!doc;n#Slider#0" expanded="false" />
                 <element signature="e#1367#4585#0" expanded="false" />
@@ -344,8 +345,13 @@
           <line>253</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/js/touch.js</url>
+          <line>138</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="18" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -726,14 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.785715">
-          <caret line="299" column="53" selection-start-line="299" selection-start-column="53" selection-end-line="299" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="14.566667">
@@ -742,10 +740,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.785715">
+          <caret line="299" column="53" selection-start-line="299" selection-start-column="53" selection-end-line="299" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/touch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.375">
-          <caret line="166" column="77" selection-start-line="166" selection-start-column="77" selection-end-line="166" selection-end-column="77" />
+        <state vertical-scroll-proportion="0.5833333">
+          <caret line="168" column="78" selection-start-line="168" selection-start-column="78" selection-end-line="168" selection-end-column="78" />
           <folding>
             <element signature="n#!!doc;n#Slider#0" expanded="false" />
             <element signature="e#1367#4585#0" expanded="false" />

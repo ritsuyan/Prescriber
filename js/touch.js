@@ -163,8 +163,10 @@ Slider.prototype.bindDOM = function(){
                 console.log( self.offsetX )
 
                 if(self.offsetX < 0){
-                    document.getElementById('swipe_table').addEventListener('touchend',endHandler)
-                    if(self.wrap.style.webkitTransform.substring(13,16) >= 300){
+
+                console.log( document.getElementById('swipe_table').style.webkitTransform)
+                    var rr =  document.getElementById('swipe_table').style.webkitTransform;
+                    if( rr.substring(rr.indexOf('-')+1,rr.indexOf('p') ) >= 200){
                         console.log(999)
                         document.getElementById('swipe_table').className += ' change_tran';
                     }
