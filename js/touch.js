@@ -164,7 +164,7 @@ Slider.prototype.bindDOM = function(){
 
                 if(self.offsetX < 0){
                     document.getElementById('swipe_table').addEventListener('touchend',endHandler)
-                    if(self.wrap.style.webkitTransform.substring(13,16) >= 250){
+                    if(self.wrap.style.webkitTransform.substring(13,16) >= 300){
                         console.log(999)
                         document.getElementById('swipe_table').className += ' change_tran';
                     }
