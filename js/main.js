@@ -511,7 +511,7 @@ function graph_data(opts){
 /**************************************  fun button show  start   *********************************/
 var  fixed_btn = document.getElementById('fixed_btn');
 var  btn_arr   =  fixed_btn.getElementsByTagName('div');
-setInterval('toggle_btn()',1000)
+setInterval('toggle_btn()',500)
 
 
 function toggle_btn(){
@@ -538,7 +538,10 @@ function toggle_btn(){
     })
 
     checked_tr_len()
-
+    deal_bug({
+        'dom' : document.getElementById('fixed-body'),
+        'addtion':document.getElementById('swiper-body')
+    })
 }
 
 var is_show = false;
