@@ -157,7 +157,14 @@ table td{
 	color: black;
 	text-align: center;
 	font-size: smaller;
-	transition: all 1s ease-out;
+	transition: opacity .1s ease-out;
+
+}
+.hide_btn{
+	opacity: 0 ;
+}
+.show_btn{
+	 opacity: 1 ;
 }
 .fun_btn:last-child{
 	left: 21% !important;
@@ -290,7 +297,7 @@ table td{
 
 /*************************8 respon  styles    ****************************************/
 .change_margin{
-	margin-left: 3rem  !important;
+	margin-left: 3rem ;
 	-webkit-transform: translate3d(0,0,0) !important;
 }
 .change_tran{

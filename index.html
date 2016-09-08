@@ -99,27 +99,12 @@
           <div class="left swipe_con">
                <table id="swipe_table">
                    <thead id="swipe_table_title" class="table-head">
-                      <tr >
-                      <!-- "name":"商品1",//商品名称
-                            "sales":"950",//销售额
-                            "prev_sales":"900",//环比销售额
-                            "sales_triangle":3,//预警
-                            "last_sales":"1200",//同比销售额
-                            "last_sales_triangle":2,//警告
-                            "amount":"100",//数量
-                            "prev_amount":"80",//环比数量
-                            "amount_triangle":1,//正常
-                            "gross_margin":"100",//毛利
-                       -->
+                      <tr>
                            <th>sales</th>
                            <th>prev_sales</th>
                            <th>sales_triangle</th>
                            <th>last_sales</th>
-                           <th onclick="sort_attr({
-      'dom': document.getElementById('swipe_table'),
-      'related': document.getElementById('fixed_table'),
-      'index' : 4
-})">CMVSPM</th>
+                           <th>CMVSPM</th>
                            <th>amount</th>
                            <th>prev_amount</th>
                            <th>gross_margin</th>
@@ -342,7 +327,11 @@
           </div> <!-- swipe_con end -->
     </div>  <!-- con_wrap end -->
 
-    <div id="fixed_btn">+</div>
+    <div id="fixed_btn">+
+        <div class="fun_btn hide_btn" style="left: -70%; top: 40%; touch-action: pan-y; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">行距</div>
+        <div class="fun_btn hide_btn" style="left: -40%; top: -45%; touch-action: pan-y; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">过滤</div>
+        <div class="fun_btn hide_btn" style="left: -10%; top: -130%; touch-action: pan-y; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">选列</div>
+    </div>
 
 
     <script src="./js/hammer.min.js"></script>
