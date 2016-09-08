@@ -511,7 +511,7 @@ function graph_data(opts){
 /**************************************  fun button show  start   *********************************/
 var  fixed_btn = document.getElementById('fixed_btn');
 var  btn_arr   =  fixed_btn.getElementsByTagName('div');
-setInterval('toggle_btn()',100)
+setInterval('toggle_btn()',1000)
 
 
 function toggle_btn(){
